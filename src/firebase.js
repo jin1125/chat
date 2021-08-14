@@ -1,6 +1,7 @@
 
   import firebase from 'firebase'
   
+  
   const firebaseConfig = {
     apiKey: "AIzaSyDGkJ9P8GXaNXLnugY7ebTKKXaP4VO0fx4",
     authDomain: "chat-d516a.firebaseapp.com",
@@ -13,8 +14,8 @@
 
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
-  const messageRef = database.ref('message')
+  const messagesRef = database.ref('message')
 
   export const pushMessage = ({name,text})=>{
-    messageRef.push({name,text})
+    messagesRef.push({name,text})
   }
