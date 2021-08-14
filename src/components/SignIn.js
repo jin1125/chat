@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import React, { useEffect, useState } from "react";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="">
         Jinta
-      </Link> 
+      </Link>
     </Typography>
   );
 }
@@ -22,16 +22,16 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -39,16 +39,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({setName}) {
+export default function SignIn({ setName }) {
   const classes = useStyles();
-  const [disabled,setDisabled] = useState(true);
-  const [string,setString] = useState('');
-  const [isComposed,setIsComposed] =useState(false);
+  const [disabled, setDisabled] = useState(true);
+  const [string, setString] = useState("");
+  const [isComposed, setIsComposed] = useState(false);
 
-  useEffect(()=>{
-    const disabled = string === ''
-    setDisabled(disabled)
-  },[string])
+  useEffect(() => {
+    const disabled = string === "";
+    setDisabled(disabled);
+  }, [string]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -67,20 +67,20 @@ export default function SignIn({setName}) {
             label="ニックネーム"
             name="name"
             autoFocus
-            onChange={(e)=>setString(e.target.value)}
-            onKeyDown={(e)=>{
-              if(isComposed) return;
+            onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (isComposed) return;
 
-              if(e.key === 'Enter'){
-                setName(e.target.value)
-                e.preventDefault()
+              if (e.key === "Enter") {
+                setName(e.target.value);
+                e.preventDefault();
               }
             }}
-            onCompositionStart={()=>{
-             setIsComposed(true)
+            onCompositionStart={() => {
+              setIsComposed(true);
             }}
-            onCompositionEnd={()=>{
-             setIsComposed(false)
+            onCompositionEnd={() => {
+              setIsComposed(false);
             }}
           />
           <Button
@@ -90,8 +90,8 @@ export default function SignIn({setName}) {
             color="primary"
             className={classes.submit}
             disabled={disabled}
-            onClick={()=>{
-              setName(string)
+            onClick={() => {
+              setName(string);
             }}
           >
             はじめる
