@@ -1,35 +1,32 @@
-import { TextField } from '@material-ui/core'
-import React, { useState } from 'react'
-import {pushMessage} from '../firebase'
+import React, { useState } from 'react';
+import { TextField } from '@material-ui/core';
 
-const MessageField = ({name,text,setText}) => {
+import { pushMessage } from '../firebase';
+
+const MessageField = ({ name, setText, text }) => {
   const [isComposed, setIsComposed] = useState(false);
 
   return (
-    <TextField 
-    fullWidth={true}
-    onChange={(e)=>setText(e.target.value)}
-    onKeyDown={(e) => {
-      if (isComposed) return;
+    <TextField
+      fullWidth={true}
+      onChange={(e) => setText(e.target.value)}
+      onKeyDown={(e) => {
+        if (isComposed) return;
 
-      const text = e.target.value;
-      if(text === '') return; 
+        const text = e.target.value;
+        if (text === '') return;
 
-      if (e.key === "Enter") {
-        pushMessage({name:'jinta',text});
-        setText('');
-        e.preventDefault();
-      }
-    }}
-    onCompositionStart={() => {
-      setIsComposed(true);
-    }}
-    onCompositionEnd={() => {
-      setIsComposed(false);
-    }}
-    value={text}
+        if (e.key === 'Enter') {
+          pushMessage({ name: 'はむさん', text });
+          setText('');
+          e.preventDefault();
+        }
+      }}
+      onCompositionStart={() => setIsComposed(true)}
+      onCompositionEnd={() => setIsComposed(false)}
+      value={text}
     />
-  )
-}
+  );
+};
 
-export default MessageField
+export default MessageField;

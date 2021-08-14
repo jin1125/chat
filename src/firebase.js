@@ -1,21 +1,29 @@
+import firebase from 'firebase';
 
-  import firebase from 'firebase'
-  
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyDGkJ9P8GXaNXLnugY7ebTKKXaP4VO0fx4",
-    authDomain: "chat-d516a.firebaseapp.com",
-    databaseURL: "https://chat-d516a.firebaseio.com",
-    projectId: "chat-d516a",
-    storageBucket: "chat-d516a.appspot.com",
-    messagingSenderId: "176015245914",
-    appId: "1:176015245914:web:8b0d3c316fd90e68d2ce63"
-  };
+const {
+  REACT_APP_FIREBASE_API_KEY,
+  REACT_APP_FIREBASE_AUTH_DOMAIN,
+  REACT_APP_FIREBASE_DATABASE_URL,
+  REACT_APP_FIREBASE_PROJECT_ID,
+  REACT_APP_FIREBASE_STORAGE_BUCKET,
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  REACT_APP_FIREBASE_APP_ID,
+} = process.env;
 
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-  const messagesRef = database.ref('message')
+const firebaseConfig = {
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: REACT_APP_FIREBASE_APP_ID,
+};
 
-  export const pushMessage = ({name,text})=>{
-    messagesRef.push({name,text})
-  }
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const messagesRef = database.ref('messages');
+
+export const pushMessage = ({ name, text }) => {
+  messagesRef.push({ name, text });
+};
